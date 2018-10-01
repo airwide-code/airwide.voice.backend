@@ -1,0 +1,181 @@
+
+https://text-to-speech-demo.ng.bluemix.net/
+
+RADIO SHOWS 600 1 $600,00
+SPORT IVR SERVICE - SPORTS SERVICE 600 1 $600,00
+HEALTH IVR SERVICE - HEALTH SERVICE 600 1 $600,00
+EXAM IVR SERVICE - EXAMS SERVICE 600 1 $600,00
+MARKET IVR SERVICE - INFORMAL MARKETS
+
+radio_shows
+1. RADIO SHOWS
+
+1.1. Alkaline Trio - Radio
+
+
+sports_results
+2. SPORTS
+2.1 English Premier League Results
+
+
+SUNDAY 19TH AUGUST
+
+Burnley 1 <break time="1s"/> Watford 3
+<break time="2s"/>
+Manchester City 6 <break time="1s"/> Huddersfield Town 1
+<break time="2s"/>
+Brighton & Hove Albion 3 <break time="1s"/> Manchester United 2
+
+SATURDAY 18TH AUGUST
+Cardiff City 0 <break time="1s"/> Newcastle United 0
+<break time="2s"/>
+Everton 2 <break time="1s"/> Southampton 1
+<break time="2s"/>
+Leicester City 2 <break time="1s"/> Wolverhampton Wanderers 0
+<break time="1s"/>
+Tottenham Hotspur 3 <break time="1s"/> Fulham 1
+<break time="2s"/>
+West Ham United 1 <break time="1s"/> AFC Bournemouth 2
+<break time="2s"/>
+Chelsea 3  <break time="1s"/>  Arsenal 2
+
+2.2 Spanish La Liga Results
+MONDAY 20TH AUGUST
+Valencia 1 <break time="1s"/>Atlético Madrid 1
+<break time="2s"/>
+Athletic Bilbao 2 <break time="1s"/> Leganés 1
+
+SUNDAY 19TH AUGUST
+Eibar 1 <break time="1s"/> Huesca 2
+<break time="2s"/>
+Rayo Vallecano 1 <break time="1s"/> Sevilla 4
+<break time="2s"/>
+Real Madrid 2 <break time="1s"/> Getafe 0
+
+SATURDAY 18TH AUGUST
+Celta Vigo 1 <break time="1s"/> Espanyol 1
+<break time="2s"/>
+Villarreal 1 <break time="1s"/> Real Sociedad 2
+<break time="2s"/>
+Barcelona 3 <break time="1s"/> Alavés 0
+
+FRIDAY 17TH AUGUST 
+Girona 0 <break time="1s"/> Real Valladolid 0
+<break time="2s"/>
+Real Betis 0 <break time="1s"/> Levante 3
+
+health_tips
+3. HEALTH TIPS
+
+3.1 toothache home remedies fast relief
+
+
+1. Salt water rinse
+For many people, a salt water rinse is an effective first-line treatment. Salt water is a natural disinfectant, and it can help loosen food particles and debris that may be stuck in between your teeth. Treating a toothache with salt water can also help reduce inflammation and heal any oral wounds.
+
+To use this approach, mix half teaspoon  of salt into a glass of warm water and use it as a mouthwash.
+
+2. Hydrogen peroxide rinse
+A hydrogen peroxide rinse may also help to relieve pain and inflammation. In addition to killing bacteria, hydrogen peroxide can reduce plaque and heal bleeding gums.
+
+Make sure you properly dilute the hydrogen peroxide. To do this, mix 3 percent hydrogen peroxide with equal parts water and use it as a mouthwash. Don’t swallow it.
+
+3. Cold compress
+You may use a cold compress to relieve any pain you’re experiencing, especially if any type of trauma has caused your toothache. When you apply a cold compress, it causes the blood vessels in the area to constrict. This makes pain less severe. The cold can also reduce any swelling and inflammation.
+
+To use this approach, hold a towel-wrapped bag of ice to the affected area for 20 minutes at a time. You can repeat this every few hours.
+
+4. Peppermint tea bags
+Peppermint tea bags can be used to numb pain and soothe sensitive gums.
+
+To do this, allow a used tea bag to cool down before applying it to the affected area. It should still be slightly warm.
+
+You can also swap approaches and use this to cool, rather than warm, the area. To do this, put a used tea bag in the freezer for a couple of minutes to chill it and then apply the bag to your tooth. Learn more about the health benefits of peppermint.
+
+5. Garlic
+For thousands of years, garlic has been recognized and used for its medicinal properties. Not only can it kill harmful bacteria that cause dental plaque, but it can also act as a pain reliever.
+
+To use this, crush a garlic clove to create a paste and apply it to the affected area. You may wish to add a tiny bit of salt. Alternatively, you can slowly chew a clove of fresh garlic.
+
+exam_results
+4. EXAMINATION RESULTS
+1. Cambridge University Ordinary Level Results for June 2018
+2. Cambridge University Advanced Level Results for June 2018
+
+4.1. Please enter student candidate number 
+
+1234
+Abel Thomson
+Mathematics A
+English B   
+Physics A
+Chemistry C 
+Biology C
+Geography B
+History B
+
+5678
+Betty <break time="1s"/>Michaels
+<break time="2s"/>
+Mathematics <break time="1s"/>B
+<break time="2s"/>
+English  <break time="1s"/>A   
+<break time="2s"/>
+Physics  <break time="1s"/>D
+<break time="2s"/>
+Chemistry  <break time="1s"/>D 
+<break time="2s"/>
+Biology  <break time="1s"/>A
+<break time="2s"/>
+Geography <break time="1s"/> B
+<break time="2s"/>
+History A
+
+4.2. Please enter student candidate number 
+
+2468
+Maria Jones
+Physics <break time="1s"/>C
+<break time="2s"/>
+Chemistry <break time="1s"/>D
+<break time="2s"/>
+Mathematics <break time="1s"/>C
+
+0246
+Peter Mathews
+History<break time="1s"/> A
+<break time="2s"/>
+Accounting<break time="1s"/> D
+<break time="2s"/>
+Geography<break time="1s"/> C
+
+informal_markets
+https://www.agriuniverse.co.zw/markets/commodity-prices.html
+
+5. INFORMAL MARKETS
+1. GMB Commodity Prices
+2. Private Commodity Prices
+
+Maize <break time="1s"/> 390 dollars
+<break time="1s"/>
+Sorghum <break time="1s"/>390 dollars
+<break time="1s"/>
+Sugar Beans <break time="1s"/>900 dollars
+<break time="1s"/>
+Groundnuts Shelled <break time="1s"/>900 dollars
+<break time="1s"/>
+Groundnuts Unshelled <break time="1s"/>550 dollars
+<break time="1s"/>
+Soya Bean <break time="1s"/>780 dollars
+
+Maize <break time="1s"/>250 dollars
+<break time="1s"/>
+Sorghum <break time="1s"/>250 dollars
+<break time="1s"/>
+Sugar Beans <break time="1s"/>950 dollars
+<break time="1s"/>
+Groundnuts Shelled <break time="1s"/>900 dollars
+<break time="1s"/>
+Groundnuts Unshelled <break time="1s"/>500 dollars
+<break time="1s"/>
+Soya Bean <break time="1s"/>480 dollars

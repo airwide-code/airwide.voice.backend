@@ -1,0 +1,243 @@
+; eBridge IVR Systems Dial Plans Configuration File
+[core_network_originated_calls]
+exten => 789,1,Answer()
+exten => 789,n,Set(idx=-1)
+exten => 789,n,Set(call_id=${SIPCALLID})
+exten => 789,n,Set(caller_id=${CALLERID(num)})
+exten => 789,n,Set(play_command_id=1)
+
+;
+; looking for subscription
+exten => 789,n(agi_lookup_subscription),agi(agi://localhost/purchase_product.agi?action_id=subscription_lookup&caller_id=${caller_id}&call_id=${call_id})
+exten => 789,n,NoOp(${subscription_found})
+exten => 789,n,GotoIf($["${subscription_found}" = "1"]?crop_subscription:welcome_agriculture_service)
+exten => 789,n,Hangup()
+;
+; welcome message
+exten => 789,n(welcome_agriculture_service),Read(idx,welcome_agriculture_service&language&press_0&help_menu_item,100,,100,3)
+exten => 789,n,GotoIf($["${idx}" = "1"]?now_purchase_agriculture_pack)
+exten => 789,n,GotoIf($["${idx}" = "0"]?help_menu)
+;exten => 789,n,GotoIf($["${idx}" = "*"]?welcome_agriculture_service)
+exten => 789,n,GotoIf($["${idx}" = ""]?welcome_agriculture_service)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(welcome_agriculture_service)
+
+;
+; crop subscription
+exten => 789,n(crop_subscription),Read(category_id,press_1&menu/crop&press_2&menu/poultry&press_0&help_menu_item,100,,100,3)
+exten => 789,n,GotoIf($["${category_id}" = "1"]?crops)
+exten => 789,n,GotoIf($["${category_id}" = "2"]?poultry)
+;exten => 789,n,GotoIf($["${category_id}" = "9"]?unsubscribing)
+exten => 789,n,GotoIf($["${category_id}" = "0"]?help_menu)
+exten => 789,n,GotoIf($["${category_id}" = "*"]?welcome_agriculture_service)
+exten => 789,n,GotoIf($["${category_id}" = ""]?crop_subscription)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(crop_subscription);
+exten => 789,n,Hangup()
+;
+; crops
+;
+exten => 789,n(crops),Read(product_id,press_1&crop/potatoes&press_2&crop/onions&press_3&crop/maize&press_4&crop/tomato,100)
+exten => 789,n,GotoIf($["${product_id}" = "1"]?rewind_play_fastforward)
+exten => 789,n,GotoIf($["${product_id}" = "2"]?option_not_available)
+exten => 789,n,GotoIf($["${product_id}" = "3"]?option_not_available)
+exten => 789,n,GotoIf($["${product_id}" = "4"]?option_not_available)
+;exten => 789,n,GotoIf($["${product_id}" = "9"]?unsubscribing)
+exten => 789,n,GotoIf($["${product_id}" = "*"]?crop_subscription)
+;exten => 789,n,GotoIf($["${product_id}" = ""]?crops)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(crops)
+exten => 789,n,Hangup()
+
+;
+; option not available
+;
+exten => 789,n(option_not_available),Playback(menu/option_not_available)
+exten => 789,n,Hangup()
+
+;
+; poultry
+;
+exten => 789,n(poultry),Read(product_id,press_1&poultry/broilers,100,,100,3)
+exten => 789,n,GotoIf($["${product_id}" = "1"]?rewind_play_fastforward)
+exten => 789,n,GotoIf($["${product_id}" = ""]?poultry)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(poultry);
+exten => 789,n,Hangup()
+
+;
+; rewind_play_fastforward
+;
+exten => 789,n(rewind_play_fastforward),Read(play_command_id,menu/rewind_play_fastforward,100,,1,3)
+exten => 789,n,GotoIf($["${play_command_id}" = "1"]?agi_call_training)
+exten => 789,n,GotoIf($["${play_command_id}" = "2"]?agi_call_training)
+exten => 789,n,GotoIf($["${play_command_id}" = "3"]?agi_call_training)
+exten => 789,n,GotoIf($["${play_command_id}" = "*"]?crop_subscription)
+exten => 789,n,GotoIf($["${play_command_id}" = ""]?play_default_track)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(rewind_play_fastforward)
+exten => 789,n,Hangup()
+
+;
+; play_default_track
+;
+exten => 789,n(play_default_track),Set(play_command_id=4)
+exten => 789,n,Goto(agi_call_training)
+;
+; agi_call_training
+;
+; reset play_command_id if replaying
+exten => 789,n(replay),Set(play_command_id=${new_play_command_id})
+exten => 789,n(agi_call_training),agi(agi://localhost/purchase_product.agi?action_id=training&caller_id=${caller_id}&category_id=${category_id}&product_id=${product_id}&play_command_id=${play_command_id})
+exten => 789,n,Set(play_command_id=4)
+exten => 789,n,NoOp(${is_billed})
+exten => 789,n,NoOp(${track_title_path})
+exten => 789,n,NoOp(${track_path})
+exten => 789,n,NoOp(${current_track_id})
+exten => 789,n,GotoIf($["${is_billed}" = "1"]?play_track)
+exten => 789,n,GotoIf($["${is_billed}" = "0"]?no_funds_to_play_track)
+
+;
+; play_track
+;
+exten => 789,n(play_track),Playback(${track_title_path})
+exten => 789,n,Read(new_play_command_id,${track_path},100)
+exten => 789,n,GotoIf($["${new_play_command_id}" = "1"]?replay)
+exten => 789,n,GotoIf($["${new_play_command_id}" = "2"]?replay)
+exten => 789,n,GotoIf($["${new_play_command_id}" = "3"]?replay)
+exten => 789,n,GotoIf($["${new_play_command_id}" = "*"]?crop_subscription)
+exten => 789,n,GotoIf($["${new_play_command_id}" = ""]?save_current_track)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(rewind_play_fastforward)
+exten => 789,n,Hangup()
+
+;
+; save_current_track_and_call_training
+;
+exten => 789,n(save_current_track),agi(agi://localhost/purchase_product.agi?action_id=save_current_track_id&caller_id=${caller_id}&category_id=${category_id}&product_id=${product_id}&current_track_id=${current_track_id})
+exten => 789,n,Goto(agi_call_training)
+
+;
+; no_funds_to_play_track
+;
+exten => 789,n(no_funds_to_play_track),Read(topup_idx,${track_title_path},100)
+exten => 789,n,GotoIf($["${topup_idx}" = "1"]?now_purchase_agriculture_pack)
+exten => 789,n,GotoIf($["${topup_idx}" = "0"]?hangup)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(no_funds_to_play_track)
+exten => 789,n,Hangup()
+
+;
+; purchase a product
+exten => 789,n(now_purchase_agriculture_pack),Read(bundle_id,now_purchase_agriculture_pack,100,,100,3)
+exten => 789,n,GotoIf($[$["${bundle_id}" = "1"] | $["${bundle_id}" = "2"] | $["${bundle_id}" = "3"]]?confirm_purchase:invalid_purchase_choice)
+exten => 789,n,GotoIf($["${idx}" = "0"]?help_menu)
+exten => 789,n,GotoIf($["${idx}" = "*"]?welcome_agriculture_service)
+exten => 789,n,GotoIf($["${idx}" = ""]?now_purchase_agriculture_pack)
+
+;
+; confirm_purchase
+;
+exten => 789,n(confirm_purchase),Read(purchase_confirmation,confirm_purchase,100,,100,3)
+exten => 789,n,GotoIf($["${purchase_confirmation}" = "1"]?agi_call_purchase_product)
+exten => 789,n,GotoIf($["${purchase_confirmation}" = ""]?confirm_purchase)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(confirm_purchase)
+exten => 789,n,Hangup()
+
+;
+; invalid choice
+;
+exten => 789,n(invalid_purchase_choice),Playback(invalid_choice)
+exten => 789,n,Goto(now_purchase_agriculture_pack);
+exten => 789,n,Hangup()
+
+;
+; agi_call_purchase_product
+;
+exten => 789,n(agi_call_purchase_product),agi(agi://localhost/purchase_product.agi?action_id=subscribe&caller_id=${caller_id}&bundle_id=${bundle_id})
+;exten => 789,n,agi(agi://localhost/account_transfer.agi?caller_id=${CALLERID(num)}&bundle_id=${bundleId})
+exten => 789,n,NoOp(${is_subscription_successfull})
+exten => 789,n,GotoIf($["${is_subscription_successfull}" = "1"]?purchase_ok)
+exten => 789,n,GotoIf($["${is_subscription_successfull}" = "0"]?purchase_failed)
+
+;
+; purchase_ok
+;
+exten => 789,n(purchase_ok),Playback(purchase_ok)
+exten => 789,n,Goto(crop_subscription)
+exten => 789,n,Hangup()
+
+;
+; purchase failed
+;
+exten => 789,n(purchase_failed),Playback(purchase_failed)
+exten => 789,n,Hangup()
+
+;exten => 789,n,Read(idx,low_balance,1)
+;exten => 789,n,Read(idx,unknown_error,1)
+exten => 789,n(help_menu),Read(help_menu_idx,menu/help_menu,100)
+exten => 789,n,GotoIf($["${help_menu_idx}" = "1"]?service_feature)
+exten => 789,n,GotoIf($["${help_menu_idx}" = "2"]?language)
+exten => 789,n,GotoIf($["${help_menu_idx}" = "3"]?now_purchase_agriculture_pack)
+exten => 789,n,GotoIf($["${help_menu_idx}" = "4"]?unsubscribing)
+exten => 789,n,GotoIf($["${help_menu_idx}" = "#"]?crop_subscription)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(help_menu);
+exten => 789,n(hangup),Hangup()
+
+;
+; service_feature
+;
+exten => 789,n(service_feature),Playback(menu/service_feature)
+exten => 789,n,Hangup()
+
+;
+; language
+;
+exten => 789,n(language),Read(language_idx,language, 100) 
+exten => 789,n,GotoIf($["${unsubscribe_selection}" = "1"]?crop_subscription)
+exten => 789,n,GotoIf($["${unsubscribe_selection}" = "2"]?option_not_available)
+exten => 789,n,GotoIf($["${unsubscribe_selection}" = "3"]?option_not_available)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(language)
+exten => 789,n(hangup),Hangup()
+
+;
+; unsubscribe
+;
+exten => 789,n(unsubscribing),Read(unsubscribe_selection,menu/unsubscribing&press_0&menu/cancel, 100) 
+exten => 789,n,GotoIf($["${unsubscribe_selection}" = "0"]?hangup)
+exten => 789,n,GotoIf($["${unsubscribe_selection}" = "1"]?agi_call_unsubscribe)
+exten => 789,n,Playback(invalid_choice)
+exten => 789,n,Goto(unsubscribing)
+exten => 789,n(hangup),Hangup()
+
+;
+; agi_call_unsubscribe
+;
+exten => 789,n(agi_call_unsubscribe),agi(agi://localhost/purchase_product.agi?action_id=unsubscribe&caller_id=${caller_id}&bundle_id=${bundle_id})
+exten => 789,n(unsubscribe_ok),Playback(unsubscribe_ok) 
+exten => 789,n(hangup),Hangup()
+
+;
+; playground
+;
+;exten => 789,n,While($[$(idx) < 0 || $(idx) > 3])
+;exten => 789,n,EndWhile
+
+;tariff information
+;exten => 789,n(tariffInformation),Playback(tariffInformation)
+;exten => 789,n,Hangup()
+
+;select an agriculture pack to purchase
+;exten => 789,n(selectAnAgriculturePackToPurchase),Read(bundleId,purchaseAgriculturePack,1)
+;exten => 789,n,Read(bundleId,purchaseAgriculturePack,1)
+
+;purchase agriculture pack
+;exten => 789,n,agi(agi://localhost/account_transfer.agi?caller_id=${CALLERID(num)}&bundle_id=${bundleId})
+;exten => 789,n,Hangup()
+
+exten => s,1,Hangup
+exten => service,1,Answer()
+exten => service,n,Hangup

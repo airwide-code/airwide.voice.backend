@@ -1,0 +1,131 @@
+789
+Press 1 for English
+Press 0 for Help menu
+
+press_1 for crop
+press_2 for poultry
+press_3 for radio_shows
+press_4 for sports_results
+press_5 for health_tips
+press_6 for exam_results
+press_7 for informal_markets
+press_0 for help_menu_item
+
+crops:
+press_1 for potatoes
+press_2 for onions
+press_3 for maize
+press_4 for tomato
+
+poultry:
+press_1 for broilers
+
+radio_shows:
+press_1 for western_radio
+
+	tracks:
+    01_radio_alkaline_title
+	01_radio_alkaline
+	
+	02_radio_sheila_on_7_title
+	02_radio_sheila_on_7
+	
+	03_radio_lana_del_rey_title
+	03_radio_lana_del_rey
+
+sports_results:
+press_1 for english_premier
+press_2 for spanish_la_liga
+
+	tracks:
+	
+	english_premier:
+	01_2018_08_19_english_premier_results_title
+	01_2018_08_19_english_premier_results
+	
+	02_2018_08_19_english_premier_results_title
+	02_2018_08_18_english_premier_results
+	
+	spanish_la_liga:
+	01_2018_08_20_spanish_la_liga_results_title
+	01_2018_08_20_spanish_la_liga_results
+	
+	02_2018_08_19_spanish_la_liga_results_title
+	02_2018_08_19_spanish_la_liga_results
+	
+	03_2018_08_18_spanish_la_liga_results_title
+	03_2018_08_18_spanish_la_liga_results
+	
+	04_2018_08_17_spanish_la_liga_results_title
+	04_2018_08_17_spanish_la_liga_results
+	
+
+health_tips
+
+press_1 for tooth_ache
+
+	tracks:
+	
+	toothache home remedies fast relief
+
+	1. Salt water rinse
+	For many people, a salt water rinse is an effective first-line treatment. Salt water is a natural disinfectant, and it can help loosen food particles and debris that may be stuck in between your teeth. Treating a toothache with salt water can also help reduce inflammation and heal any oral wounds.
+
+	To use this approach, mix half teaspoon  of salt into a glass of warm water and use it as a mouthwash.
+
+	2. Hydrogen peroxide rinse
+	A hydrogen peroxide rinse may also help to relieve pain and inflammation. In addition to killing bacteria, hydrogen peroxide can reduce plaque and heal bleeding gums.
+
+	Make sure you properly dilute the hydrogen peroxide. To do this, mix 3 percent hydrogen peroxide with equal parts water and use it as a mouthwash. Don’t swallow it.
+
+	3. Cold compress
+	You may use a cold compress to relieve any pain you’re experiencing, especially if any type of trauma has caused your toothache. When you apply a cold compress, it causes the blood vessels in the area to constrict. This makes pain less severe. The cold can also reduce any swelling and inflammation.
+
+	To use this approach, hold a towel-wrapped bag of ice to the affected area for 20 minutes at a time. You can repeat this every few hours.
+
+	4. Peppermint tea bags
+	Peppermint tea bags can be used to numb pain and soothe sensitive gums.
+
+	To do this, allow a used tea bag to cool down before applying it to the affected area. It should still be slightly warm.
+
+	You can also swap approaches and use this to cool, rather than warm, the area. To do this, put a used tea bag in the freezer for a couple of minutes to chill it and then apply the bag to your tooth. Learn more about the health benefits of peppermint.
+
+	5. Garlic
+	For thousands of years, garlic has been recognized and used for its medicinal properties. Not only can it kill harmful bacteria that cause dental plaque, but it can also act as a pain reliever.
+
+	To use this, crush a garlic clove to create a paste and apply it to the affected area. You may wish to add a tiny bit of salt. Alternatively, you can slowly chew a clove of fresh garlic.
+
+exam_results:
+	Enter candidate_number
+	
+	track:
+		candidate_number=1234
+		01_exam_results_abel_thomson_title
+		01_exam_results_abel_thomson
+		
+		candidate_number=5678
+		02_exam_results_betty_michaels_title
+		02_exam_results_betty_michaels
+		
+		candidate_number=2468
+		03_exam_results_maria_jones_title
+		03_exam_results_maria_jones
+		
+		candidate_number=0246
+		04_exam_results_peter_mathews_title
+		04_exam_results_peter_mathews
+		
+informal_markets:
+press_1 for gmb_prices
+press_2 for private_market_prices
+
+	tracks:
+	
+	gmb_prices:
+	01_informal_markets_gmb_commodity_prices_title
+	01_informal_markets_gmb_commodity_prices
+	
+	private_market_prices:
+	01_informal_markets_private_commodity_prices_title
+	01_informal_markets_private_commodity_prices
+	
